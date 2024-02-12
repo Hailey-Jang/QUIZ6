@@ -1,0 +1,34 @@
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+simulate_efficiency <- function(num_hours = 8, num_employees = 2, opening_hour = 9, closing_hour = 17) {
+  hours <- seq(opening_hour, closing_hour)
+  employees <- seq(1, num_employees)
+  data <- list()
+  
+  for (hour in hours) {
+    for (employee in employees) {
+      # Simulate number of customers served as a random number between 3 and 10
+      customers_served <- sample(3:10, 1)
+      data <- c(data, list(c(employee, hour, customers_served)))
+    }
+  }
+  
+  df <- as.data.frame(do.call(rbind, data))
+  colnames(df) <- c('employee_id', 'hour', 'customers_served')
+  return(df)
+}
+
+# Simulate the data
+simulated_data <- simulate_efficiency()
+
+# Visualizing the simulated data
+ggplot(simulated_data, aes(x = hour, y = customers_served, color = factor(employee_id))) +
+  geom_point() +
+  labs(x = "Hour", y = "Number of Customers Served", color = "Employee ID") +
+  ggtitle("Efficiency of Employees") +
+  theme_minimal()
+```
