@@ -20,4 +20,6 @@ test_that("Each city appears only once in the dataset", {
   expect_equal(length(unique(german_cities)), length(german_cities))
 })
 
+'''
+
 
