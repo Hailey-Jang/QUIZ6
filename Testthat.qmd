@@ -1,0 +1,23 @@
+'''{r}
+# Test for Presence of All Cities:
+# This test checks whether all the specified cities are present in the dataset. It ensures that none of the cities are missing from the variable "german_cities".
+
+test_that("All specified cities are present in the dataset", {
+  expect_true(all(c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Rostock") %in% german_cities))
+})
+
+# Test for Absence of Extra Cities:
+# This test verifies that the variable "german_cities" does not contain any additional cities beyond the specified ones. It ensures that the dataset only contains the cities mentioned.
+
+test_that("No extra cities are present in the dataset", {
+  expect_equal(sort(unique(german_cities)), sort(c("Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Rostock")))
+})
+
+# Test for Unique Cities:
+# This test confirms that each city appears only once in the dataset, preventing duplicates. It ensures that there are no repeated entries for any city in the "german_cities" variable.
+
+test_that("Each city appears only once in the dataset", {
+  expect_equal(length(unique(german_cities)), length(german_cities))
+})
+
+
