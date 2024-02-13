@@ -1,0 +1,12 @@
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+# Create scatter plot
+ggplot(subscriber_data, aes(x = Subscriber_ID, y = Number_of_Comments_Posted)) +
+  geom_point() +
+  labs(x = "Subscriber ID", y = "Number of Comments Posted") +
+  ggtitle("Number of Comments Posted by Subscribers")
+```
